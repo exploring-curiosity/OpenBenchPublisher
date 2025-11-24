@@ -564,6 +564,9 @@ name = "datasetsmith"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "dagster" },
+    { name = "dagster-webserver" },
+    { name = "fastapi" },
     { name = "imagehash" },
     { name = "mcp-agent", extra = ["openai"] },
     { name = "openai" },
@@ -576,18 +579,11 @@ dependencies = [
     { name = "voyageai" },
 ]
 
-[package.optional-dependencies]
-app = [
-    { name = "dagster" },
-    { name = "dagster-webserver" },
-    { name = "fastapi" },
-]
-
 [package.metadata]
 requires-dist = [
-    { name = "dagster", marker = "extra == 'app'", specifier = ">=1.12.3" },
-    { name = "dagster-webserver", marker = "extra == 'app'", specifier = ">=1.12.3" },
-    { name = "fastapi", marker = "extra == 'app'", specifier = ">=0.121.3" },
+    { name = "dagster", specifier = ">=1.12.3" },
+    { name = "dagster-webserver", specifier = ">=1.12.3" },
+    { name = "fastapi", specifier = ">=0.121.3" },
     { name = "imagehash", specifier = ">=4.3.2" },
     { name = "mcp-agent", extras = ["openai"], specifier = ">=0.2.5" },
     { name = "openai", specifier = ">=1.30.0" },
@@ -599,7 +595,6 @@ requires-dist = [
     { name = "tavily-python", specifier = ">=0.7.13" },
     { name = "voyageai", specifier = ">=0.3.5" },
 ]
-provides-extras = ["app"]
 
 [[package]]
 name = "distro"

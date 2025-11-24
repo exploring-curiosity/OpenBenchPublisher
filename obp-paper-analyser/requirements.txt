@@ -1,0 +1,7 @@
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+tavily-python>=0.3.4
+python-dotenv>=1.0.1
+pymongo>=4.10.0
+sentence-transformers>=3.0.0
+openai>=1.30.0

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenBench Publisher – Researcher Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="obp-header">
+      <div class="obp-header-inner">
+        <div>
+          <h1>OpenBench Publisher</h1>
+          <p class="obp-subtitle">
+            Discover new papers, analyze claims, and generate reproducible dataset specifications.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="obp-main">
+      <section class="obp-card" id="domain-search">
+        <h2>1. Discover papers by topic / domain</h2>
+        <p class="obp-section-help">
+          Describe an area of interest (e.g. <code>cs.CL diffusion models</code> or
+          <code>depth estimation</code>) and filter by recency & domains.
+        </p>
+        <form id="search-form" class="obp-form-row">
+          <input
+            id="search-query"
+            type="text"
+            placeholder="e.g. cs.CV depth estimation, medical imaging, RLHF safety"
+            required
+          />
+          <select id="search-time-range">
+            <option value="day">Last day</option>
+            <option value="week" selected>Last week</option>
+            <option value="month">Last month</option>
+            <option value="year">Last year</option>
+            <option value="">All time</option>
+          </select>
+          <input
+            id="search-max-results"
+            type="number"
+            min="1"
+            max="20"
+            value="10"
+            title="Max results"
+          />
+          <button type="submit">Search</button>
+        </form>
+        <div class="obp-chip-row">
+          <span class="obp-chip obp-chip-static">Domains:</span>
+          <label class="obp-chip">
+            <input type="checkbox" value="arxiv.org" checked /> arxiv.org
+          </label>
+          <label class="obp-chip">
+            <input type="checkbox" value="openaccess.thecvf.com" checked /> thecvf.com
+          </label>
+          <label class="obp-chip">
+            <input type="checkbox" value="paperswithcode.com" /> paperswithcode.com
+          </label>
+        </div>
+        <div id="search-results" class="obp-results-grid"></div>
+      </section>
+
+      <section class="obp-card" id="url-analyze">
+        <h2>2. Analyze a specific paper URL</h2>
+        <p class="obp-section-help">
+          Paste a paper URL (e.g. arXiv, CVPR, etc.). We'll crawl it, summarize, detect datasets &
+          tasks, and extract heuristic claims into MongoDB.
+        </p>
+        <form id="analyze-form" class="obp-form-row">
+          <input
+            id="paper-url"
+            type="url"
+            placeholder="https://arxiv.org/abs/2506.17298"
+            required
+          />
+          <button type="submit">Analyze paper</button>
+        </form>
+      </section>
+
+      <section class="obp-card" id="analysis-panel">
+        <h2>Analysis</h2>
+        <div id="analysis-content" class="obp-analysis-empty">
+          <p>No paper selected yet. Run a search or analyze a URL to see results here.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="obp-footer">
+      <span id="status-indicator">Backend: unknown</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
