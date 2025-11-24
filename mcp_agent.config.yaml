@@ -1,0 +1,27 @@
+# MCP-Agent Configuration File
+# Config definition: https://github.com/lastmile-ai/mcp-agent/blob/main/src/mcp_agent/config.py
+$schema: https://raw.githubusercontent.com/lastmile-ai/mcp-agent/refs/heads/main/schema/mcp-agent.config.schema.json
+
+name: openbench_publisher
+execution_engine: asyncio
+
+
+logger:
+  transports: [console, file]
+  level: info
+
+mcp:
+  servers:
+    # Filesystem access server
+    filesystem:
+      command: npx
+      args: ["-y", "@modelcontextprotocol/server-filesystem", "."]
+
+    # Web fetch server
+    fetch:
+      command: uvx
+      args: ["mcp-server-fetch"]
+
+openai:
+  default_model: "gpt-4o-mini"
+
